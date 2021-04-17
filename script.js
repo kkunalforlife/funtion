@@ -34,8 +34,9 @@ var movies = [
 
 
 window.onload = function(){
-    SortedMovies(movies);
-    DisplayMovies(movies);
+ // let sortMovies =  SortedMovies(movies)
+ let sortMovies = SortmoviesATTR(movies , 'title')  
+ DisplayMovies(sortMovies);
 }
 
 
@@ -57,13 +58,13 @@ function SortedMovies(movies){
     
         movies[max_location] = movies[j]
         movies[j] = max_obj;
-       console.log(movies[j]);
+       console.log(movies[j].rank);
         return movies;
 }
 }
 
 function DisplayMovies(movies){
-    let table ="<table boder  = '1' style='width: 100 , align-content: center>'";
+    let table ="<table boder  = '1' style='width: 100%' align-content: 'center'>'";
     for (let index = 0 ; index < movies.length; index++){
     table += "<tr><th>id</th><th>title</th><th>rank</th>"
     table +="<tr>" ;
@@ -76,6 +77,25 @@ function DisplayMovies(movies){
 }
 
 
-function SortmoviesATTR(){
+function SortmoviesATTR(movies ,sortattr){
+    for (let j = 0 ; j<= movies.length ; j++){
+        
 
+        let max_obj = movies[j];
+        let max_location = j;
+       
+
+        for (var i= j ; i< movies.length ; i++){
+
+            if (movies[i][sortattr]> max_obj[sortattr]){
+             max_obj = movies[i]
+             let max_location = i;
+            }    
+    }
+    
+        movies[max_location] = movies[j]
+        movies[j] = max_obj;
+       console.log(movies[j][sortattr]);
+        return movies;
+    }
 }
