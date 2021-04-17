@@ -1,59 +1,81 @@
-let movies = [
+var movies = [
     {
-        tile:"fight cliub",
-        rank:"10",
+        title:"fight cliub",
+        rank:10,
         id: "1"
     },
     {
-        tile:"fight cliub1",
-        rank:"9",
+        title:"fight cliub1",
+        rank:9,
         id: "2"
     },
     {
-        tile:"fight cliub2",
-        rank:"8",
+        title:"fight cliub2",
+        rank:8,
         id: "3"
     },
     {
-        tile:"fight cliub4",
-        rank:"7",
+        title:"fight cliub4",
+        rank:7,
         id: "4"
     },
     {
-        tile:"fight cliub5",
-        rank:"6",
-        id: ""
+        title:"fight cliub5",
+        rank:6,
+        id: "2"
     },
     {
-        tile:"fight cliub7",
-        rank:"4",
+        title:"fight cliub7",
+        rank:4,
         id: "1"
-    },
+    }
 ]
 
 
 
 window.onload = function(){
-    SortedMovies(movies)
+    SortedMovies(movies);
+    DisplayMovies(movies);
 }
 
 
 function SortedMovies(movies){
-    for (var j = 0 ; j<= movies.length ; j++){
+    for (let j = 0 ; j<= movies.length ; j++){
         
 
-        let max_obj = movies[j]
-        let max_location = j
+        let max_obj = movies[j];
+        let max_location = j;
+       
 
         for (var i= j ; i< movies.length ; i++){
 
-            if (movies[i].rank > mox_obj.rank){
-             max_obj = movies[i];
-        let max_location = i;
+            if (movies[i].rank > max_obj.rank){
+             max_obj = movies[i]
+             let max_location = i;
             }    
     }
-    }
-        movies[max_location] = movies[j];
-        movies[j] = max_num
-        console.log(movies);
+    
+        movies[max_location] = movies[j]
+        movies[j] = max_obj;
+       console.log(movies[j]);
+        return movies;
+}
+}
+
+function DisplayMovies(movies){
+    let table ="<table boder  = '1' style='width: 100 , align-content: center>'";
+    for (let index = 0 ; index < movies.length; index++){
+    table += "<tr><th>id</th><th>title</th><th>rank</th>"
+    table +="<tr>" ;
+    table += "<td>" +movies[index].id +"</td>";
+    table += "<td>" +movies[index].title +"</td>";
+    table += "<td>" +movies[index].rank +"</td>";
+    table += "'</tr>"
+  document.getElementById("Movie-list").innerHTML = table; 
+}
+}
+
+
+function SortmoviesATTR(){
+
 }
