@@ -35,7 +35,7 @@ var movies = [
 
 window.onload = function(){
  // let sortMovies =  SortedMovies(movies)
- let sortMovies = SortmoviesATTR(movies , 'title')  
+ let sortMovies = SortmoviesATTR(movies , 'id')
  DisplayMovies(sortMovies);
 }
 
@@ -48,17 +48,17 @@ function SortedMovies(movies){
         let max_location = j;
        
 
-        for (var i= j ; i< movies.length ; i++){
+    /* //     for (var i= j ; i< movies.length ; i++){
 
-            if (movies[i].rank > max_obj.rank){
-             max_obj = movies[i]
-             let max_location = i;
-            }    
-    }
+    //         if (movies[i].rank > max_obj.rank){
+    //          max_obj = movies[i]
+    //          let max_location = i;
+    //         }    
+    // }
     
-        movies[max_location] = movies[j]
-        movies[j] = max_obj;
-       console.log(movies[j].rank);
+    //     movies[max_location] = movies[j]
+         movies[j] = max_obj;
+        console.log(movies[j].rank); */
         return movies;
 }
 }
@@ -83,19 +83,40 @@ function SortmoviesATTR(movies ,sortattr){
 
         let max_obj = movies[j];
         let max_location = j;
+       // let max = getMaxMovieObject(movies , j , sortattr)
+        // max_obj = max.max_obj;
+        // max_location = max.max_index;
        
 
-        for (var i= j ; i< movies.length ; i++){
+         for (var i= j ; i< movies.length ; i++){
 
-            if (movies[i][sortattr]> max_obj[sortattr]){
-             max_obj = movies[i]
-             let max_location = i;
-            }    
-    }
+             if (movies[i][sortattr]> max_obj[sortattr]){
+              max_obj = movies[i]
+              let max_location = i;
+             }    
+     }
     
-        movies[max_location] = movies[j]
-        movies[j] = max_obj;
-       console.log(movies[j][sortattr]);
-        return movies;
-    }
+         movies[max_location] = movies[j]
+         movies[j] = max_obj;
+        console.log(movies[j][sortattr]);
+           }
+           return movies;
+        }
+
+
+function getMaxMovieObject(movies , start , sortattr){
+let max_obj = movies[start];
+let max_location = start;
+for (let i =0; i<movies.length; i++){
+    
+    if (movies[i][sortattr]> max_obj[sortattr]){
+                 max_obj = movies[i];
+                  max_location = i;
+                }    
+        }
+    return {max_obj : max_obj , max_index: max_location};
+
 }
+
+
+
